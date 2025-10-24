@@ -1,0 +1,95 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: black;
+  /* min-height: 50vh; */
+  /* margin-top:50px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #85C086;
+  font-family: 'Red Hat Display';
+}
+
+.App-header p{
+  margin-top:50px;
+}
+
+.App-header .shadow-main {
+  font-weight: bold;
+  font-size: 3rem;
+  transition: all 0.5s ease-in-out;
+}
+
+
+.App-header .shadow-main:hover {
+  text-shadow: 10px 10px 2px rgb(88, 92, 88);
+  cursor:default;
+}
+
+
+.App-main {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+  font-family: 'Red Hat Display';
+}
+
+.App-main .creator-options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -60px;
+}
+.App-main .creator-options li{
+  list-style-type: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: black;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.App-main .creator-options li:hover {
+  background-color: #85C086;
+  transform: scale(1.1);
+}
+
+.App-main .creator-options li a {
+  text-decoration: none;
+  color: #85C086;
+  transition: all 0.4s ease-in-out;
+}
+
+.App-main .creator-options li:hover a {
+  color: black; 
+}
+
+/* FOOTER */
+.App-footer {
+  background-color: black;
+  min-height: 50vh;
+  font-family: 'Red Hat Display';
+}
