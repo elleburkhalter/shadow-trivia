@@ -1,14 +1,35 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
-import { FaUserCircle} from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { IoIosLock } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-    const [role, setRole] = useState("creator"); // "creator" | "player"
+    const [role, setRole] = useState("creator");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+
+        // Placeholder authentication
+        if (username && password) {
+            if (role === "creator") {
+                navigate("/creator");
+            } else {
+                navigate("/user");
+            }
+        } else {
+            alert("Please enter username and password");
+        }
+    };
+
     return (
         <div className='border'>
-            <form action="">
+            <form onSubmit={handleLogin}>
                 <h1>SHADOW TRIVIA</h1>
+
                 {/* Role Selection Buttons */}
                 <div className="role-select">
                     <button
@@ -26,13 +47,27 @@ const LoginPage = () => {
                         Player
                     </button>
                 </div>
+
                 <div className="input-box">
-                    <input type="text" placeholder='Username' required />
-                    <FaUserCircle className='icon'/>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                    <FaUserCircle className='icon' />
                 </div>
+
                 <div className="input-box">
-                    <input type="password" placeholder='Password' required />
-                    <IoIosLock className='icon'/>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <IoIosLock className='icon' />
                 </div>
 
                 <div className="remember-forgot">
