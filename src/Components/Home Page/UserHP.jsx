@@ -1,6 +1,6 @@
 import './UserHP.css';
 
-function App() {
+const PlayerHomePage = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -25,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default PlayerHomePage;

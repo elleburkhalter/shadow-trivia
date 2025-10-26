@@ -1,6 +1,6 @@
 import './CreatorHP.css';
 
-function App() {
+const CreatorHomePage = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -25,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default CreatorHomePage;
