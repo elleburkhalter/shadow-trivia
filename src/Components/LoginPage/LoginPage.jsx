@@ -26,6 +26,7 @@ const LoginPage = () => {
     };
 
     return (
+        <div className="login-container">
         <div className='border'>
             <form onSubmit={handleLogin}>
                 <h1>SHADOW TRIVIA</h1>
@@ -81,6 +82,7 @@ const LoginPage = () => {
                     <p>Don't have an account? <a href="#">Register</a></p>
                 </div>
             </form>
+        </div>
         </div>
     );
 };

@@ -1,13 +1,12 @@
-import './UserHP.css';
+import './CreatorHP.css';
 
 const PlayerHomePage = () => {
   return (
     <div className="App">
       <header className="App-header">
         <p>
-          Welcome User to 
+          Welcome User to </p>
           <p className="shadow-main">SHADOW TRIVIA </p>
-        </p>
       </header>
 
       <div className="App-main">

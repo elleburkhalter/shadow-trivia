@@ -2,33 +2,21 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: black;
-  /* min-height: 50vh; */
-  /* margin-top:50px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #85C086;
   font-family: 'Red Hat Display';
 }
 
 .App-header p{
   margin-top:50px;
+  color:rgb(213, 255, 128);
 }
+
 
 .App-header .shadow-main {
   font-weight: bold;
@@ -45,21 +33,23 @@
 
 .App-main {
   background-color: black;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: black;
   font-family: 'Red Hat Display';
+  min-height: 30vh;
 }
 
 .App-main .creator-options{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -60px;
+  margin-top: -40px;
 }
+
 .App-main .creator-options li{
   list-style-type: none;
   font-size: 1.5rem;
@@ -67,29 +57,40 @@
   padding: 1rem;
   margin: 1rem;
   background-color: black;
-  border-radius: 1rem;
+  border-radius: 40px;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
 }
 
+.App-main .creator-options li a {
+  display: block;
+  padding: 1rem 2rem;
+  color: black !important;
+  background-color:rgb(213, 255, 128) !important;
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+  border-radius: 40px;
+}
+
 .App-main .creator-options li:hover {
-  background-color: #85C086;
+  background-color: black;
   transform: scale(1.1);
 }
 
 .App-main .creator-options li a {
   text-decoration: none;
-  color: #85C086;
+  color:rgb(213, 255, 128);
   transition: all 0.4s ease-in-out;
 }
 
 .App-main .creator-options li:hover a {
-  color: black; 
+  color: black !important; 
 }
 
 /* FOOTER */
 .App-footer {
-  background-color: black;
-  min-height: 50vh;
+  min-height: 43vh;
   font-family: 'Red Hat Display';
+  background: url(../Background/gradient.jpg) no-repeat center center;
+  background-size: cover;
 }

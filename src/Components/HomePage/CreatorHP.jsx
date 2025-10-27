@@ -1,13 +1,15 @@
+import React from "react";
 import './CreatorHP.css';
+
 
 const CreatorHomePage = () => {
   return (
     <div className="App">
       <header className="App-header">
         <p>
-          Welcome Creator to 
+          Welcome Creator to</p>
           <p className="shadow-main">SHADOW TRIVIA </p>
-        </p>
+        
       </header>
 
       <div className="App-main">
