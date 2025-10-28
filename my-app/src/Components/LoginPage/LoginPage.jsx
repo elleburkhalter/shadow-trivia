@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
-import { FaUserCircle} from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { IoIosLock } from "react-icons/io";
+import { login } from "../../api"; // ✅ import the backend connection function
 
 const LoginPage = () => {
     const [role, setRole] = useState("creator"); // "creator" | "player"
+    const [username, setUsername] = useState(""); // ✅ added
+    const [password, setPassword] = useState(""); // ✅ added
+    const [message, setMessage] = useState("");   // ✅ feedback message
+
+    // ✅ handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = await login(username, password);
+
+        if (data.token) {
+            setMessage(`Welcome, ${data.user.username} (${data.user.role})`);
+            localStorage.setItem("token", data.token);
+        } else {
+            setMessage(data.message || "Login failed");
+        }
+    };
+
     return (
         <div className='border'>
-            <form action="">
+            {/* ✅ added onSubmit handler */}
+            <form onSubmit={handleSubmit}>
                 <h1>SHADOW TRIVIA</h1>
+
                 {/* Role Selection Buttons */}
                 <div className="role-select">
                     <button
@@ -26,13 +46,29 @@ const LoginPage = () => {
                         Player
                     </button>
                 </div>
+
                 <div className="input-box">
-                    <input type="text" placeholder='Username' required />
-                    <FaUserCircle className='icon'/>
+                    {/* ✅ track username */}
+                    <input
+                        type="text"
+                        placeholder='Username'
+                        required
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <FaUserCircle className='icon' />
                 </div>
+
                 <div className="input-box">
-                    <input type="password" placeholder='Password' required />
-                    <IoIosLock className='icon'/>
+                    {/* ✅ track password */}
+                    <input
+                        type="password"
+                        placeholder='Password'
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <IoIosLock className='icon' />
                 </div>
 
                 <div className="remember-forgot">
@@ -45,6 +81,9 @@ const LoginPage = () => {
                 <div className="register-link">
                     <p>Don't have an account? <a href="#">Register</a></p>
                 </div>
+
+                {/* ✅ show backend response message */}
+                {message && <p style={{ marginTop: "10px" }}>{message}</p>}
             </form>
         </div>
     );
