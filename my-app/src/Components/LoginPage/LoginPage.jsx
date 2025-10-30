@@ -3,12 +3,14 @@ import './LoginPage.css';
 import { FaUserCircle } from "react-icons/fa";
 import { IoIosLock } from "react-icons/io";
 import { login } from "../../api"; // ✅ import the backend connection function
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
     const [role, setRole] = useState("creator"); // "creator" | "player"
     const [username, setUsername] = useState(""); // ✅ added
     const [password, setPassword] = useState(""); // ✅ added
     const [message, setMessage] = useState("");   // ✅ feedback message
+    const navigate = useNavigate();
 
     // ✅ handle form submission
     const handleSubmit = async (e) => {
@@ -21,9 +23,22 @@ const LoginPage = () => {
         } else {
             setMessage(data.message || "Login failed");
         }
+
+        // Placeholder authentication
+        if (username && password) {
+            if (role === "creator") {
+                navigate("/creator");
+            }
+            if (role === "player") {
+                navigate("/user");
+            }
+        } else {
+            alert("Please enter username and password");
+        }
     };
 
     return (
+        <div className='login-container'>
         <div className='border'>
             {/* ✅ added onSubmit handler */}
             <form onSubmit={handleSubmit}>
@@ -85,6 +100,7 @@ const LoginPage = () => {
                 {/* ✅ show backend response message */}
                 {message && <p style={{ marginTop: "10px" }}>{message}</p>}
             </form>
+        </div>
         </div>
     );
 };
