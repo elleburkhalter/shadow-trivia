@@ -15,25 +15,28 @@ const LoginPage = () => {
     // ✅ handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = await login(username, password);
 
-        if (data.token) {
-            setMessage(`Welcome, ${data.user.username} (${data.user.role})`);
-            localStorage.setItem("token", data.token);
-        } else {
-            setMessage(data.message || "Login failed");
-        }
+        try {
+            const data = await login(username, password);
 
-        // Placeholder authentication
-        if (username && password) {
-            if (role === "creator") {
-                navigate("/creator");
+            if (data.token) {
+                // Successful login
+                setMessage(`Welcome, ${data.user.username} (${data.user.role})`);
+                localStorage.setItem("token", data.token);
+
+                // Navigate based on role
+                if (data.user.role === "creator") {
+                    navigate("/creator");
+                } else if (data.user.role === "player") {
+                    navigate("/user");
+                }
+            } else {
+                // Backend returned an error (e.g., invalid credentials)
+                setMessage(data.message || "Login failed");
             }
-            if (role === "player") {
-                navigate("/user");
-            }
-        } else {
-            alert("Please enter username and password");
+        } catch (error) {
+            console.error("Login error:", error);
+            setMessage("Server error. Please try again later.");
         }
     };
 
