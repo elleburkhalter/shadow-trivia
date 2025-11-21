@@ -1,0 +1,161 @@
+{
+    "quizzes":[
+        {
+            "id": 1,
+            "title": "Science Quiz",
+            "questions": [
+            {
+                "question": "Which is not a state of matter?",
+                "options": [
+                    "Solid",
+                    "Liquid",
+                    "Batman",
+                    "Gas"
+                ],
+                "answerindex": 2
+            },
+            {
+                "question": "Which planet is known as the Red Planet?",
+                "options": [
+                    "Earth",
+                    "Mars",
+                    "Jupiter",
+                    "Saturn"
+                ],
+                "answerindex": 1
+            }
+            ]
+        },
+        {
+
+            "id": 2,
+            "title": "History Quiz",
+            "questions": [
+                {
+                    "question": "Who was the first President of the United States?",
+                    "options": [
+                        "Thomas Jefferson",
+                        "Abraham Lincoln",
+                        "George Washington",
+                        "John Adams"
+                    ],
+                    "answerindex": 2
+                },
+                {
+                    "question": "In which year did World War II end?",
+                    "options": [
+                        "1945",
+                        "1939",
+                        "1918",
+                        "1963"
+                    ],
+                    "answerindex": 0
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Math Quiz",
+            "questions": [
+                {
+                    "question": "What is the value of Pi (π) up to two decimal places?",
+                    "options": [
+                        "3.14",
+                        "2.72",
+                        "1.62",
+                        "1.41"
+                    ],
+                    "answerindex": 0
+                },
+                {
+                    "question": "What is 7 multiplied by 8?",
+                    "options": [
+                        "54",
+                        "56",
+                        "58",
+                        "60"
+                    ],
+                    "answerindex": 1
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Geography Quiz",
+            "questions": [
+                {
+                    "question": "What is the largest ocean on Earth?",
+                    "options": [
+                        "Atlantic Ocean",
+                        "Indian Ocean",
+                        "Arctic Ocean",
+                        "Pacific Ocean"
+                    ],
+                    "answerindex": 3
+                },
+                {
+                    "question": "Which country has the largest population?",
+                    "options": [
+                        "India",
+                        "United States",
+                        "China",
+                        "Russia"
+                    ],
+                    "answerindex": 2
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Literature Quiz",
+            "questions": [
+                {
+                    "question": "Who wrote 'Romeo and Juliet'?",
+                    "options": [
+                        "Charles Dickens",
+                        "William Shakespeare",
+                        "Mark Twain",
+                        "Jane Austen"
+                    ],
+                    "answerindex": 1
+                },
+                {
+                    "question": "What is the name of the hobbit played by Elijah Wood in the 'Lord of the Rings' movies?",
+                    "options": [
+                        "Bilbo Baggins",
+                        "Frodo Baggins",
+                        "Samwise Gamgee",
+                        "Peregrin Took"
+                    ],
+                    "answerindex": 1
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Sports Quiz",
+            "questions": [
+                {
+                    "question": "How many players are there in a soccer team on the field?",
+                    "options": [
+                        "9",
+                        "10",
+                        "11",
+                        "12"
+                    ],
+                    "answerindex": 2
+                },
+                {
+                    "question": "In which sport is the term 'love' used?",
+                    "options": [
+                        "Cricket",
+                        "Tennis",
+                        "Football",
+                        "Basketball"
+                    ],
+                    "answerindex": 1
+                }
+            ]
+        }
+    ]
+}

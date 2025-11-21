@@ -1,6 +1,8 @@
 import React from "react";
 import './Navbar.css';
 import portrait from './portrait.png';
+import { Link } from "react-router-dom";
+import CreatorHomePage from './CreatorHP';
 
 const Navbar = () => {
     return (
@@ -15,13 +17,13 @@ const Navbar = () => {
             <div className ="navbar-center">
                 <ul className = "nav-links">
                     <li>
-                        <a href="/">Home</a>
+                        <Link to="/user">Home</Link>
                     </li>
                     <li>
-                        <a href="/about">About</a>
+                        <Link to="/about">About</Link>
                     </li>
                     <li>
-                        <a href="/contact">Contact</a>
+                        <Link to="/contact">Contact</Link>
                     </li>
                 </ul>
             </div>
