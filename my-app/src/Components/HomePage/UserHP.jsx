@@ -1,4 +1,5 @@
 import './CreatorHP.css';
+import { Link } from "react-router-dom";
 
 const PlayerHomePage = () => {
   return (
@@ -12,7 +13,7 @@ const PlayerHomePage = () => {
       <div className="App-main">
         <ul className ="creator-options">
           {/* ADD LINKS TO OPTIONS */}
-          <li className ="create-quiz-button"> <a href="/" >Browse Quizzes </a> </li>
+          <li className ="create-quiz-button"> <Link to="/browse-quizzes" >Browse Quizzes </Link> </li>
           <li className ="create-classroom-button"> <a href="/" >Join Classroom</a></li>
         </ul>
       </div>

@@ -1,0 +1,45 @@
+.Browse-App {
+  text-align: center;
+}
+
+.Browse-main {
+  background-color: rgb(0, 0, 0);
+  min-height: 50vh;
+}
+
+.Browse-main .quiz-options {
+  font-family: 'Red Hat Display';
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  justify-content: center;
+  padding: 50px;
+}
+
+.Browse-main .quiz-options li {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 20px;
+  margin: 1rem;
+  background-color: rgb(187, 219, 123);
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.4s ease-in-out;
+}
+
+.Browse-main .quiz-options li:hover {
+  transform: scale(1.05);
+}
+
+.Browse-main .quiz-options li a{
+  text-decoration: none;
+  color: black;
+}
+
+
+.Browse-footer {
+  background-color: rgb(0, 0, 0);
+  min-height: 70vh;
+}
