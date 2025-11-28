@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import './LoginPage.css';
 import { FaUserCircle } from "react-icons/fa";
 import { IoIosLock } from "react-icons/io";
-import { login } from "../../api"; // ✅ import the backend connection function
+import { login } from "../../api"; // Import the backend connection function
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-    const [role, setRole] = useState("creator"); // "creator" | "player"
-    const [username, setUsername] = useState(""); // ✅ added
-    const [password, setPassword] = useState(""); // ✅ added
-    const [message, setMessage] = useState("");   // ✅ feedback message
+    const [role, setRole] = useState("creator");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
     const navigate = useNavigate();
 
-    // ✅ handle form submission
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -24,14 +24,14 @@ const LoginPage = () => {
                 setMessage(`Welcome, ${data.user.username} (${data.user.role})`);
                 localStorage.setItem("token", data.token);
 
-                // Navigate based on role
+                // Navigate based on user role
                 if (data.user.role === "creator") {
                     navigate("/creator");
                 } else if (data.user.role === "player") {
                     navigate("/user");
                 }
             } else {
-                // Backend returned an error (e.g., invalid credentials)
+                // Backend returned an error (e.g. invalid credentials)
                 setMessage(data.message || "Login failed");
             }
         } catch (error) {
@@ -43,7 +43,7 @@ const LoginPage = () => {
     return (
         <div className='login-container'>
         <div className='border'>
-            {/* ✅ added onSubmit handler */}
+            {/* onSubmit handler */}
             <form onSubmit={handleSubmit}>
                 <h1>SHADOW TRIVIA</h1>
 
@@ -66,7 +66,7 @@ const LoginPage = () => {
                 </div>
 
                 <div className="input-box">
-                    {/* ✅ track username */}
+                    {/* Track username */}
                     <input
                         type="text"
                         placeholder='Username'
@@ -78,7 +78,7 @@ const LoginPage = () => {
                 </div>
 
                 <div className="input-box">
-                    {/* ✅ track password */}
+                    {/* Track password */}
                     <input
                         type="password"
                         placeholder='Password'
@@ -100,7 +100,7 @@ const LoginPage = () => {
                     <p>Don't have an account? <a href="#">Register</a></p>
                 </div>
 
-                {/* ✅ show backend response message */}
+                {/* Show backend response message */}
                 {message && <p style={{ marginTop: "10px" }}>{message}</p>}
             </form>
         </div>

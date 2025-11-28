@@ -1,0 +1,303 @@
+.Create-Quiz-Page {
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: black;
+    font-family: 'Red Hat Display';
+    min-height: 80vh;
+    position: relative;
+}
+
+.create-quiz-container h1 {
+    color: lightgreen;
+    position: absolute;
+    top: 10%;
+}
+
+/*Quiz Overview*/
+.quiz-setup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top: 25%;
+    width: 100%;
+    max-width: 600px;
+}
+
+.quiz-title-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.quiz-title-section label {
+    color: rgb(163, 228, 137);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.title-input {
+    font-family: 'Red Hat Display';
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border-radius: 25px;
+    background-color: black;
+    border: 2px solid rgb(163, 228, 137);
+    color: rgb(163, 228, 137);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.title-input::placeholder {
+    color: rgba(163, 228, 137, 0.6);
+}
+
+.title-input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgb(163, 228, 137);
+}
+
+/*Questions Overview*/
+.questions-display {
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.questions-display h2 {
+    font-size: 1.5rem;
+    color: rgb(81, 99, 79);
+}
+
+.questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: rgba(163, 228, 137, 0.1);
+    border-radius: 15px;
+}
+
+.question-item {
+    padding: 10px;
+    background-color: rgba(163, 228, 137, 0.2);
+    border-left: 3px solid rgb(163, 228, 137);
+    border-radius: 5px;
+    text-align: left;
+}
+
+.question-item p {
+    color: rgb(163, 228, 137);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Quiz Actions */
+.quiz-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.add-question-btn,
+.finish-quiz-btn {
+    font-family: 'Red Hat Display';
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    border-radius: 50px;
+    background-color: black;
+    border: 2px solid rgb(163, 228, 137);
+    color: rgb(163, 228, 137);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-question-btn:hover,
+.finish-quiz-btn:hover {
+    box-shadow: 0 0 30px greenyellow;
+    transform: scale(1.05);
+}
+
+.finish-quiz-btn {
+    background-color: rgb(163, 228, 137);
+    color: black;
+    border-color: rgb(163, 228, 137);
+}
+
+.finish-quiz-btn:hover {
+    box-shadow: 0 0 30px rgba(163, 228, 137, 0.8);
+}
+
+/* Question Section */
+.question-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position:absolute;
+    top: 25%;
+    width: 100%;
+    max-width: 700px;
+    gap: 20px;
+}
+
+.question-input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.question-input-group label {
+    color: rgb(163, 228, 137);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.question-input {
+    font-family: 'Red Hat Display';
+    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: 25px;
+    background-color: black;
+    border: 2px solid rgb(163, 228, 137);
+    color: rgb(163, 228, 137);
+    width: 100%;
+    text-align: center;
+}
+
+.question-input::placeholder {
+    color: rgba(163, 228, 137, 0.6);
+}
+
+.question-input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgb(163, 228, 137);
+}
+
+/* Answers Section */
+.answers-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.answers-label {
+    color: rgb(81, 99, 79);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.answer-options-create {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    justify-items: left;
+}
+
+.answer-input-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+.answer-input {
+    font-family: 'Red Hat Display';
+    font-size: 1.05rem;
+    padding: 14px 12px;
+    min-height: 48px;
+    border-radius: 18px;
+    background-color: black;
+    border: 2px solid rgb(163, 228, 137);
+    color: rgb(163, 228, 137);
+    flex: 1;
+    text-align: left;
+}
+
+.answer-input::placeholder {
+    color: rgba(163, 228, 137, 0.6);
+}
+
+.answer-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgb(163, 228, 137);
+}
+
+.correct-answer-radio {
+    cursor: pointer;
+    accent-color: rgb(163, 228, 137);
+}
+
+.answer-input-wrapper label {
+    color: rgb(163, 228, 137);
+    font-size: 0.85rem;
+    margin-left: 4px;
+}
+
+/* Question Actions */
+.question-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.save-question-btn,
+.back-btn {
+    font-family: 'Red Hat Display';
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    border-radius: 50px;
+    background-color: black;
+    border: 2px solid rgb(163, 228, 137);
+    color: rgb(163, 228, 137);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.save-question-btn:hover,
+.back-btn:hover {
+    box-shadow: 0 0 30px greenyellow;
+    transform: scale(1.05);
+}
+
+.save-question-btn {
+    background-color: rgb(163, 228, 137);
+    color: black;
+    border-color: rgb(163, 228, 137);
+}
+
+.save-question-btn:hover {
+    box-shadow: 0 0 30px rgba(163, 228, 137, 0.8);
+}
+
+.Game-App {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
