@@ -1,15 +1,17 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const usersModel = require('../models/usersModel');
-require('dotenv').config();
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import usersModel from '../models/usersModel.js';
+import dotenv from 'dotenv';
 
-const SALT_ROUNDS = 10;
+dotenv.config();
 
-async function register(req, res) {
-  const { username, password } = req.body;
+const SALT_ROUNDS = Number(process.env.SALT_ROUNDS) || 10;
 
-  if (!username || !password) {
-    return res.status(400).json({ error: 'Username and password are required' });
+export async function register(req, res) {
+  const { username, password, role } = req.body;
+
+  if (!username || !password || !role) {
+    return res.status(400).json({ error: 'Username, password and role are required' });
   }
 
   const existingUser = await usersModel.findByUsername(username);
@@ -18,7 +20,7 @@ async function register(req, res) {
   }
 
   const hash = await bcrypt.hash(password, SALT_ROUNDS);
-  const user = await usersModel.createUser({ username, password_hash: hash });
+  const user = await usersModel.createUser({ username, password_hash: hash, role });
 
   const token = jwt.sign(
     { id: user.id, username: user.username },
@@ -29,7 +31,7 @@ async function register(req, res) {
   res.json({ user, token });
 }
 
-async function login(req, res) {
+export async function login(req, res) {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -58,4 +60,4 @@ async function login(req, res) {
   });
 }
 
-module.exports = { register, login };
+export default { register, login };
