@@ -1,50 +1,81 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import User from "../models/User.js";
+import { authenticate } from "../middlewares/auth.js";
+import pg from "pg";
 
 const router = express.Router();
+const pool = new pg.Pool({ /* config */ });
 
-// Register a new user
+// REGISTER
 router.post("/register", async (req, res) => {
-  try {
-    const { username, password, role } = req.body;
+    const { username, password, role, classroom } = req.body;
 
-    const existing = await User.findOne({ username });
-    if (existing) return res.status(400).json({ message: "Username already exists" });
+    const existing = await pool.query(
+        "SELECT * FROM users WHERE username=$1",
+        [username]
+    );
+    if (existing.rows.length > 0) {
+        return res.status(400).json({ message: "Username exists" });
+    }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashed = await bcrypt.hash(password, 10);
 
-    const user = new User({ username, password: hashedPassword, role });
-    await user.save();
-
-    res.status(201).json({ message: "User created successfully" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Login
-router.post("/login", async (req, res) => {
-  try {
-    const { username, password } = req.body;
-
-    const user = await User.findOne({ username });
-    if (!user) return res.status(404).json({ message: "User not found" });
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
-
-    const token = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }
+    const user = await pool.query(
+        `INSERT INTO users (username, password, role, classroom)
+     VALUES ($1, $2, $3, $4)
+     RETURNING id, username, role, classroom`,
+        [username, hashed, role, classroom || {}]
     );
 
-    res.json({ token, user: { id: user._id, username: user.username, role: user.role } });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+    res.json(user.rows[0]);
+});
+
+// LOGIN
+router.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+
+    const result = await pool.query(
+        "SELECT * FROM users WHERE username=$1",
+        [username]
+    );
+
+    if (result.rows.length === 0)
+        return res.status(404).json({ message: "User not found" });
+
+    const user = result.rows[0];
+
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) return res.status(400).json({ message: "Invalid credentials" });
+
+    const token = jwt.sign(
+        { id: user.id, role: user.role },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+    );
+
+    res.json({
+        token,
+        user: {
+            id: user.id,
+            username: user.username,
+            role: user.role,
+            classroom: user.classroom
+        }
+    });
+});
+
+// ME
+router.get("/me", authenticate, async (req, res) => {
+    const result = await pool.query(
+        "SELECT id, username, role, classroom FROM users WHERE id=$1",
+        [req.user.id]
+    );
+
+    if (result.rows.length === 0)
+        return res.status(404).json({ error: "User not found" });
+
+    res.json(result.rows[0]);
 });
 
 export default router;

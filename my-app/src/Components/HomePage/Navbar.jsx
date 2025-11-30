@@ -1,8 +1,25 @@
 import React from "react";
 import './Navbar.css';
 import portrait from './portrait.png';
+import { Link } from "react-router-dom";
+import CreatorHomePage from './CreatorHP';
+import {getCurrentUser} from "../../api";
+
+
+const token = localStorage.getItem("token");
+
+const user = await getCurrentUser(token);
+console.log(user);
 
 const Navbar = () => {
+    function getHome() {
+        if(user.role === "creator"){
+            return (<Link to="/creator">Home</Link>)
+        } else if(user.role === "player"){
+            return (<Link to="/user">Home</Link>)
+        }
+    }
+
     return (
         <nav className="navbar">
             <div className="navbar-left">
@@ -15,13 +32,13 @@ const Navbar = () => {
             <div className ="navbar-center">
                 <ul className = "nav-links">
                     <li>
-                        <a href="/">Home</a>
+                        {getHome()}
                     </li>
                     <li>
-                        <a href="/about">About</a>
+                        <Link to="/about">About</Link>
                     </li>
                     <li>
-                        <a href="/contact">Contact</a>
+                        <Link to="/contact">Contact</Link>
                     </li>
                 </ul>
             </div>

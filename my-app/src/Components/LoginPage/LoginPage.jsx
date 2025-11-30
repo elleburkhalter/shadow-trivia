@@ -25,10 +25,14 @@ const LoginPage = () => {
                 localStorage.setItem("token", data.token);
 
                 // Navigate based on role
-                if (data.user.role === "creator") {
+                if (data.user.role === "creator" && role === "creator") {
                     navigate("/creator");
-                } else if (data.user.role === "player") {
+                } else if (data.user.role === "player" && role === "player") {
                     navigate("/user");
+                }
+
+                if (data.user.role === "creator" && role === "player" || data.user.role === "player" && role === "creator") {
+                    setMessage("Switch account type please");
                 }
             } else {
                 // Backend returned an error (e.g., invalid credentials)

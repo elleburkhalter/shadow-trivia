@@ -1,0 +1,70 @@
+.quiz-play-container {
+    background-color: black;
+    min-height: 100vh;
+    font-family: 'Red Hat Display';
+    color: rgb(163, 228, 137);
+    text-align: center;
+    padding-top: 40px;
+}
+
+.quiz-play-container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: rgb(163, 228, 137);
+    text-shadow: 0 0 20px greenyellow;
+}
+
+/* Question */
+.quiz-play-question {
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+/* Answer buttons — match gameplay style */
+.quiz-play-answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.quiz-play-answers button {
+    font-family: 'Red Hat Display';
+    font-size: 1.3rem;
+    padding: 15px;
+    border-radius: 40px;
+    background-color: black;
+    border: 2px solid rgb(163, 228, 137);
+    color: rgb(163, 228, 137);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.quiz-play-answers button:hover {
+    box-shadow: 0 0 25px greenyellow;
+    transform: scale(1.05);
+}
+
+/* Results Screen */
+.quiz-play-results h2 {
+    font-size: 4rem;
+    color: rgb(163, 228, 137);
+    margin-bottom: 20px;
+}
+
+.quiz-play-results a {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(163, 228, 137);
+    padding: 12px 30px;
+    border-radius: 40px;
+    transition: 0.3s ease;
+    position: relative;
+    top: 40px;
+}
+
+.quiz-play-results a:hover {
+    transform: scale(1.12);
+}

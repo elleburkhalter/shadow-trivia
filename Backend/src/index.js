@@ -4,6 +4,10 @@ import dotenv from "dotenv";
 import pg from "pg";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import classroomRoutes from "./routes/classrooms.js";
+import quizRoutes from "./routes/quizzes.js";
+
+
 
 dotenv.config();
 const app = express();
@@ -54,6 +58,37 @@ app.post("/api/users/login", async (req, res) => {
   res.json({ token, user: { id: user.id, username: user.username, role: user.role } });
 });
 
+// Get current user info
+app.get("/api/users/me", async (req, res) => {
+    const header = req.headers.authorization;
+
+    if (!header || !header.startsWith("Bearer ")) {
+        return res.status(401).json({ error: "No authentication header" });
+    }
+
+    const token = header.split(" ")[1];
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const result = await pool.query(
+            "SELECT id, username, role FROM users WHERE id=$1",
+            [decoded.id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+        res.status(401).json({ error: "Invalid or expired token" });
+    }
+});
+
+
+app.use("/api/classrooms", classroomRoutes);
+app.use("/api/quizzes", quizRoutes);
 
 
 app.listen(process.env.PORT, () => console.log(`🚀 Server running on port ${process.env.PORT}`));

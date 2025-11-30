@@ -17,3 +17,14 @@ export async function register(username, password, role) {
   });
   return response.json();
 }
+
+export async function getCurrentUser(token) {
+    const response = await fetch(`${API_BASE}/me`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        },
+    });
+    return response.json();
+}
+

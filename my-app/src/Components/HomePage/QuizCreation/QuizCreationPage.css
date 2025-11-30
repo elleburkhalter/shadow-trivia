@@ -1,0 +1,84 @@
+/* Container */
+.create-quiz-container {
+    background-color: black;
+    min-height: 100vh;
+    color: rgb(213, 255, 128);
+    font-family: 'Red Hat Display';
+    padding: 40px;
+    text-align: center;
+}
+
+/* Title */
+.create-quiz-container h1 {
+    margin-bottom: 20px;
+    color: rgb(213, 255, 128);
+}
+
+/* Input fields */
+.create-quiz-container input,
+.create-quiz-container select {
+    font-family: 'Red Hat Display';
+    width: 90%;
+    padding: 12px;
+    margin: 15px auto;
+    display: block;
+    border-radius: 8px;
+    border-color: black;
+    box-sizing: border-box;
+    background-color: rgb(187, 219, 123);
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.create-quiz-container input:focus,
+.create-quiz-container select:focus {
+    transform: scale(1.03);
+    outline: none;
+}
+
+/* Questions Block */
+.questions-section {
+    margin-top: 30px;
+}
+
+.question-block {
+    background-color: rgb(187, 219, 123);
+    padding: 20px;
+    border-radius: 12px;
+    border-color: black;
+    width: 70%;
+    margin: 25px auto;
+    box-sizing: border-box;
+    transition: 0.3s ease-in-out;
+}
+
+.question-block:hover {
+    transform: scale(1.02);
+}
+
+/* Save Button */
+.save-btn {
+    margin-top: 30px;
+    padding: 14px 30px;
+    background-color: rgb(187, 219, 123);
+    color: black;
+    font-family: 'Red Hat Display';
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.save-btn:hover {
+    transform: scale(1.08);
+    background-color: rgb(213, 255, 128);
+}
+
+.page-footer {
+    min-height: 70vh;
+    background: url(../../Background/gradient.jpg) no-repeat center center;
+    background-size: cover;
+    width: 100%;
+}
+

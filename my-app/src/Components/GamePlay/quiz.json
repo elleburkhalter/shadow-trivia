@@ -1,0 +1,40 @@
+{
+  "quizzes": [
+    {
+      "id": 1,
+      "type": "science",
+      "title": "Science Quiz",
+      "sizeTypes": [5, 10, 15, 20]
+    },
+    {
+      "id": 2,
+      "type": "history",
+      "title": "History Quiz",
+      "sizeTypes": [5, 10, 15, 20]
+    },
+    {
+      "id": 3,
+      "type": "math",
+      "title": "Math Quiz",
+      "sizeTypes": [5, 10, 15, 20]
+    },
+    {
+      "id": 4,
+      "type": "geography",
+      "title": "Geography Quiz",
+      "sizeTypes": [5, 10, 15, 20]
+    },
+    {
+      "id": 5,
+      "type": "literary",
+      "title": "Literature Quiz",
+      "sizeTypes": [5, 10, 15, 20]
+    },
+    {
+      "id": 6,
+      "type": "sports",
+      "title": "Sports Quiz",
+      "sizeTypes": [5, 10, 15, 20]
+    }
+  ]
+}
